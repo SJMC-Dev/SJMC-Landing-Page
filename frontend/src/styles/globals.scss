@@ -1,6 +1,6 @@
 @import "@/styles/custom.ant.scss";
 @import "@/styles/_themify.scss";
-// @import "@/styles/animations.css";
+@import "@/styles/animations.css";
 
 @import "@/styles/github-markdown-light.css";
 @import "@/styles/github-markdown-dark.css";
@@ -52,12 +52,16 @@ code {
     height: auto;
 
     @include themify {
-        background-color: themed('secondary-bg-color');
+        // background-color: themed('secondary-bg-color');
         border: themed('primary-border-color') solid 1px;
     }
 
     text-align: left;
     white-space: normal;
+}
+
+.basic-card {
+    animation: floatUp 0.5s ease-out forwards;
 }
 
 /* layout */

@@ -1,10 +1,13 @@
-import { useContext } from "react";
+import react, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import Image from 'next/image';
 import { FloatButton, Grid, Layout, Space, Typography } from "antd";
 import { MoonOutlined, SunOutlined } from "@ant-design/icons";
 import BasicCard from "@/components/basic-card";
 import ThemeContext from '@/contexts/theme';
+import { MessageContext } from '@/contexts/message';
+import { getShownPages } from '@/services/pages';
+import { Page } from '@/models/page';
 import BgLight from '../../assets/bg-light.png';
 import BgDark from '../../assets/bg-dark.png';
 
@@ -13,9 +16,18 @@ const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
 
 export default function HomePage() {
-
+  const [pages, setPages] = useState<Page[]>([]);
   const screens = useBreakpoint();
+  const message = useContext(MessageContext);
   const themeCtx = useContext(ThemeContext);
+
+  useEffect(() => {
+    const data = getShownPages()
+    .then((data) => {
+        setPages(data);
+      })
+    .catch(err => message.error(err));
+  }, []);
 
   return (
     <>
@@ -33,10 +45,16 @@ export default function HomePage() {
             <div className="home-title">
               <Title className="home-title" level={2}>标题</Title>
             </div>
-            <BasicCard link="" title="Test Card" subtitle="测试测试测试测试"></BasicCard>
-            <BasicCard link="" title="Test Card" subtitle="测试测试测试测试"></BasicCard>
-            <BasicCard link="" title="Test Card" subtitle="测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试"></BasicCard>
-            <BasicCard link="" title="Test Card" subtitle="测试测试测试测试"></BasicCard>
+            {pages.map(page => (
+              <BasicCard 
+                key={page.id} 
+                link={page.id.toString()} 
+                title={page.title} 
+                subtitle={page.subtitle} 
+                style={{backgroundColor: themeCtx.userTheme === 'light' ? page.card_color_light : page.card_color_dark}}
+                />
+              ))
+            }
           </Space>
         </Content>
         <Footer className="layout-footer">

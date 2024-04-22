@@ -1,0 +1,18 @@
+**/__pycache__/
+
+db.sqlite3
+
+## migrations
+
+/chat/migrations/**
+!/chat/migrations/__init__.py
+
+/oauth/migrations/**
+!/oauth/migrations/__init__.py
+
+/files/migrations/**
+!/files/migrations/__init__.py
+
+## build
+
+build

@@ -7,18 +7,20 @@ interface BasicCardProps {
     link?: string;      
     title?: string;
     subtitle?: React.ReactNode;
+    style?: React.CSSProperties;
 }
 
 const BasicCard: React.FC<BasicCardProps> = ({ 
     link,
     title,
     subtitle,
+    style
 }) => {
     return (
-        <Button className="container basic-card">
+        <Button className="container basic-card" style={{...style}}>
             <Space direction='vertical'>
                 <Typography>
-                    <Title level={3}>{title}</Title>
+                    <Title level={4}>{title}</Title>
                     <Paragraph>{subtitle}</Paragraph>
                 </Typography>
             </Space>
