@@ -15,7 +15,7 @@ def get_page(request, page_id):
 
 @sync_to_async
 def list_pages(request):
-    pages = Page.objects.filter(is_shown=True).order_by('id').values(
+    pages = Page.objects.filter(is_shown=True).order_by('order').values(
         'id', 'title', 'subtitle', 'card_color_light', 'card_color_dark'
         )
     return JsonResponse(list(pages), safe=False)
