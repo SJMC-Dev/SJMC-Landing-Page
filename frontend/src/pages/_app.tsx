@@ -1,6 +1,32 @@
-import "@/styles/globals.css";
+import { useEffect, useState } from "react";
+import Head from "next/head";
 import type { AppProps } from "next/app";
+import { ThemeContextProvider } from '@/contexts/theme';
+import { MessageContextProvider } from "@/contexts/message";
+
+import "@/styles/globals.scss";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  const [mounted, setMounted] = useState<boolean>(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted)
+    return (
+      <>
+        <Head>
+          <title>加载中</title>
+        </Head>
+        <></>
+      </>
+    );
+
+  return (
+    <ThemeContextProvider>
+      <MessageContextProvider>
+        <Component {...pageProps} />  
+      </MessageContextProvider>
+    </ThemeContextProvider>
+  )
 }

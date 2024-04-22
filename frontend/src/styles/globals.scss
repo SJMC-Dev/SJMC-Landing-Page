@@ -1,0 +1,111 @@
+@import "@/styles/custom.ant.scss";
+@import "@/styles/_themify.scss";
+// @import "@/styles/animations.css";
+
+@import "@/styles/github-markdown-light.css";
+@import "@/styles/github-markdown-dark.css";
+
+/* root */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+:root {
+    --page-padding: 8%;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    @include themify {
+        background-color: themed('scrollbar-bg-color');
+    }
+
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @include themify {
+        background-color: themed('scrollbar-color');
+    }
+}
+
+/* basic card */
+.container {
+    border-radius: 8px;
+    padding: 16px 16px 6px 16px;
+    width: 100%;
+    height: auto;
+
+    @include themify {
+        background-color: themed('secondary-bg-color');
+        border: themed('primary-border-color') solid 1px;
+    }
+
+    text-align: left;
+    white-space: normal;
+}
+
+/* layout */
+.main-layout {
+    min-height: 100vh !important;
+}
+
+.layout-header {
+    position: relative;
+    height: 25vh;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        @include themify {
+            $primary-bg-color: themed('primary-bg-color');
+            background: linear-gradient(
+                to bottom,
+                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0) 60%,
+                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0.8) 80%,
+                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 1) 100%
+            );
+        }
+        z-index: 1; 
+    }
+}
+
+.layout-header img{
+    z-index: 0;
+}
+
+.layout-content {
+    padding: 40px var(--page-padding) 0px var(--page-padding) !important;
+    @include themify {
+        background-color: themed('primary-bg-color');
+    }
+}
+
+.layout-footer {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    font-size: 12px;
+    @include themify {
+        color: themed('secondary-text-color');
+    }
+}

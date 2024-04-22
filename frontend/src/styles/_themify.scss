@@ -1,0 +1,22 @@
+@import '@/styles/_theme.scss';
+ 
+@mixin themify {
+  @each $theme-name, $theme-map in $themes {
+    $theme-map: $theme-map !global;
+    [data-theme=#{$theme-name}] & {
+      @content;
+    }
+  }
+}
+ 
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+//导出antd主题色变量供js使用
+// :export {
+//     @each $theme-name, $theme-map in $themes {
+//       #{$theme-name}-antd-color-primary: map-get($theme-map, primary-ant-color);
+//       #{$theme-name}-antd-color-bg-container: map-get($theme-map, secondary-ant-color);
+//     }
+// }
