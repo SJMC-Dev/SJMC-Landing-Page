@@ -7,7 +7,7 @@ import BasicCard from "@/components/basic-card";
 import ThemeContext from '@/contexts/theme';
 import { MessageContext } from '@/contexts/message';
 import { getShownPages } from '@/services/pages';
-import { Page } from '@/models/page';
+import { PageEntry } from '@/models/page';
 import BgLight from '../../assets/bg-light.png';
 import BgDark from '../../assets/bg-dark.png';
 
@@ -16,7 +16,7 @@ const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
 
 export default function HomePage() {
-  const [pages, setPages] = useState<Page[]>([]);
+  const [pages, setPages] = useState<PageEntry[]>([]);
   const screens = useBreakpoint();
   const message = useContext(MessageContext);
   const themeCtx = useContext(ThemeContext);
@@ -34,7 +34,7 @@ export default function HomePage() {
       <Head>
         <title>SJMC Landing Page</title>
       </Head>
-      <Layout className="main-layout">
+      <Layout className="lp-layout">
         <Header className="layout-header">
           <Image src={themeCtx.userTheme === 'light' ? BgLight : BgDark} 
             alt="Background" unoptimized layout="fill" objectFit="cover"
@@ -48,7 +48,7 @@ export default function HomePage() {
             {pages.map(page => (
               <BasicCard 
                 key={page.id} 
-                link={page.id.toString()} 
+                id={page.id.toString()} 
                 title={page.title} 
                 subtitle={page.subtitle} 
                 style={{backgroundColor: themeCtx.userTheme === 'light' ? page.card_color_light : page.card_color_dark}}
