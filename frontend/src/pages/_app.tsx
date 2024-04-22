@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeContextProvider>
       <MessageContextProvider>
-        <Component {...pageProps} />  
+        <Component {...pageProps} /> 
       </MessageContextProvider>
     </ThemeContextProvider>
   )
