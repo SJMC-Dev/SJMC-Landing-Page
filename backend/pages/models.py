@@ -1,8 +1,8 @@
 from django.db import models
 
 class Page(models.Model):
-    title = models.CharField(max_length=200)
-    subtitle = models.CharField(max_length=200, blank=True)
+    title = models.CharField(max_length=100)
+    subtitle = models.CharField(max_length=100, blank=True)
     type = models.CharField(max_length=10, choices=(
         ('article', 'Article'), 
         ('link', 'Link')
@@ -12,6 +12,8 @@ class Page(models.Model):
     order = models.PositiveIntegerField(default=0, db_index=True, blank=False, null=False)
     card_color_light = models.CharField(max_length=7, default='#FFFFFF')
     card_color_dark = models.CharField(max_length=7, default='#000000')
+    logo_url = models.CharField(max_length=100, blank=True)
+    banner_url = models.CharField(max_length=100, blank=True)
 
     class Meta:
         ordering = ['order']

@@ -1,14 +1,12 @@
-import react, { useContext, useEffect, useState } from "react";
+import react, { useContext } from "react";
 import Head from "next/head";
 import Image from 'next/image';
-import { FloatButton, Grid, Layout, Space, Typography, Row, Col } from "antd";
+import { FloatButton, Grid, Layout } from "antd";
 import { MoonOutlined, SunOutlined } from "@ant-design/icons";
 // import BasicCard from "@/components/basic-card";
 import HomeCardList from "@/components/home-card-list";
 import ThemeContext from '@/contexts/theme';
 import { MessageContext } from '@/contexts/message';
-import { getShownPages } from '@/services/pages';
-import { PageEntry } from '@/models/page';
 import BgLight from '../../assets/bg-light.png';
 import BgDark from '../../assets/bg-dark.png';
 

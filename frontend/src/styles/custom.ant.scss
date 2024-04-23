@@ -1,11 +1,15 @@
 .basic-card .ant-typography:first-of-type {
-    margin-top: -8px;
-    margin-bottom: 10px;
+    margin-top: -4px;
+    margin-bottom: 8px;
     font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.ant-btn {
+    padding: 0px;
 }
 
 .home-title .ant-typography {
     margin-top: 0vh;
-    margin-bottom: 3vh;
+    margin-bottom: 1vh;
     font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', 'Segoe UI', 'Roboto', 'Oxygen','Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }

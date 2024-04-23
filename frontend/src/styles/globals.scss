@@ -53,7 +53,6 @@ code {
 /* basic card */
 .container {
     border-radius: 8px;
-    padding: 16px 16px 6px 16px;
     width: 100%;
     height: auto;
 
@@ -64,10 +63,42 @@ code {
 
     text-align: left;
     white-space: normal;
+    overflow: hidden;
 }
 
 .basic-card {
     animation: floatUp 0.5s ease-out forwards;
+}
+
+.basic-card .card-content {
+    padding: 16px 16px 6px 16px;
+}
+
+.basic-card .card-banner-img {
+    position: relative;
+    height: 17vh;
+    width: 100%;
+    margin-bottom: -12px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+                to bottom,
+                rgba(var(--card-r), var(--card-g), var(--card-b), 0) 70%,
+                rgba(var(--card-r), var(--card-g), var(--card-b), 0.85) 90%,
+                rgba(var(--card-r), var(--card-g), var(--card-b), 1) 100%
+            );
+        z-index: 1; 
+    }
+}
+
+.basic-card .card-banner-img img {
+    z-index: 0;
 }
 
 /* layout */
@@ -123,7 +154,7 @@ code {
     }
 }
 
-.layout-header img{
+.layout-header img {
     z-index: 0;
 }
 
