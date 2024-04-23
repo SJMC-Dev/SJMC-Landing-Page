@@ -145,8 +145,8 @@ code {
             $primary-bg-color: themed('primary-bg-color');
             background: linear-gradient(
                 to bottom,
-                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0) 60%,
-                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0.8) 80%,
+                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0) 70%,
+                rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 0.85) 90%,
                 rgba(red($primary-bg-color), green($primary-bg-color), blue($primary-bg-color), 1) 100%
             );
         }
