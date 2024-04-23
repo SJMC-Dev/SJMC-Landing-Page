@@ -21,13 +21,11 @@ To launch a development server, use
 npm run dev
 ```
 
-To build the project for the production environment, use
+To launch a production server, use
 
 ```bash
-npm run build
+npm run start
 ```
-
-Then the built files are located at `frontend/out/`.
 
 ## Backend
 
