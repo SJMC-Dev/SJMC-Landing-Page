@@ -12,19 +12,19 @@ The frontend uses React, NextJS with Typescript. Please make sure you have `node
 
 ```bash
 cd frontend
-frontend$ npm install
+npm install
 ```
 
 To launch a development server, use
 
 ```bash
-frontend$ npm run dev
+npm run dev
 ```
 
 To build the project for the production environment, use
 
 ```bash
-frontend$ npm run build
+npm run build
 ```
 
 Then the built files are located at `frontend/out/`.
@@ -33,19 +33,23 @@ Then the built files are located at `frontend/out/`.
 
 The backend uses the Python-based Django framework. Install the necessary package first.
 
+```bash
+cd backend
+pip install -r requirements.txt
+```
+
 To initialize the database, please use
 
 ```bash
-cd backend
-backend$ python manage.py makemigrations
-backend$ python manage.py migrate
-backend$ python manage.py createsuperuser # Create admin user
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser # Create admin user
 ```
 
 To launch a development server, use
 
 ```bash
-backend$ python manage.py runserver
+python manage.py runserver
 ```
 
 To launch the production environment server, please use Gunicorn or another suitable server.
@@ -54,5 +58,5 @@ It should be noted that the backend also has static pages that need to be built 
 
 ```bash
 # First set STATIC_ROOT in Django settings.py
-backend$ python manage.py collectstatic
+python manage.py collectstatic
 ```

@@ -1,0 +1,3 @@
+django
+django-admin-sortable2
+django-cors-headers
