@@ -1,10 +1,12 @@
 import react, { useContext, useEffect, useState } from "react";
-import { Space, Typography, Grid } from "antd";
+import { Space, Typography, Grid, Flex } from "antd";
+import Image from 'next/image';
 import BasicCard from "@/components/basic-card";
 import ThemeContext from '@/contexts/theme';
 import { MessageContext } from '@/contexts/message';
 import { getShownPages } from '@/services/pages';
 import { PageEntry } from '@/models/page';
+import SJMCIcon from '../../assets/mcclub.png';
 
 const { Title } = Typography;
 
@@ -26,7 +28,13 @@ const HomeCardList = () => {
     return (
     <Space direction="vertical" style={{width: '100%'}} size="large">
         <div className="home-title">
-            <Title className="home-title" level={screens.lg ? 1:2}>标题</Title>
+            <Flex justify="space-between" align="flex-start">
+                <Title className="home-title" level={screens.lg ? 1:2}>
+                    我的世界<br/>
+                    <span className="home-title-highlighted">我们的大学</span>
+                </Title>
+                <Image src={SJMCIcon} alt="SJMC Icon" width={50} height={50} unoptimized/>
+            </Flex>
         </div>
         {pages.map(page => (
             <BasicCard 

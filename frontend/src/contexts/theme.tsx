@@ -27,7 +27,7 @@ export const ThemeContextProvider = (props : LayoutProps) => {
   const changeThemeHandler = (themeName : string) => {        
     setUserTheme(themeName);
     message.open({
-      content: `Set the time to ${themeName==='light'?'1000':'18000'}`,
+      content: `/time set ${themeName==='light'?'day':'night'}`,
       icon: <CodeOutlined />,
       duration: 1
     })

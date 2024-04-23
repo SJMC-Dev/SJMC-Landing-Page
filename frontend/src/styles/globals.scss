@@ -159,7 +159,7 @@ code {
 }
 
 .layout-content {
-    padding: 0vh var(--page-padding) 2vh var(--page-padding) !important;
+    padding: 0.5vh var(--page-padding) 2vh var(--page-padding) !important;
     @include themify {
         background-color: themed('primary-bg-color');
     }
@@ -210,7 +210,20 @@ code {
     animation: fadeIn 0.2s ease-in-out forwards; 
 }
 
-/*artivcle*/
+/* article */
 .page-content>* {
     animation: floatUp 0.5s ease-out;
+}
+
+/* home title */
+.home-title-highlighted {
+    @include themify {
+        color: themed('sjtu-red-color') !important;
+    }
+}
+
+.home-title {
+    @include themify {
+        color: themed('secondary-text-color') !important;
+    }
 }
