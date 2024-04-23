@@ -1,9 +1,10 @@
 import react, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import Image from 'next/image';
-import { FloatButton, Grid, Layout, Space, Typography } from "antd";
+import { FloatButton, Grid, Layout, Space, Typography, Row, Col } from "antd";
 import { MoonOutlined, SunOutlined } from "@ant-design/icons";
-import BasicCard from "@/components/basic-card";
+// import BasicCard from "@/components/basic-card";
+import HomeCardList from "@/components/home-card-list";
 import ThemeContext from '@/contexts/theme';
 import { MessageContext } from '@/contexts/message';
 import { getShownPages } from '@/services/pages';
@@ -12,22 +13,12 @@ import BgLight from '../../assets/bg-light.png';
 import BgDark from '../../assets/bg-dark.png';
 
 const { useBreakpoint } = Grid;
-const { Header, Footer, Content } = Layout;
-const { Title } = Typography;
+const { Header, Footer, Content, Sider } = Layout;
 
 export default function HomePage() {
-  const [pages, setPages] = useState<PageEntry[]>([]);
   const screens = useBreakpoint();
   const message = useContext(MessageContext);
   const themeCtx = useContext(ThemeContext);
-
-  useEffect(() => {
-    const data = getShownPages()
-    .then((data) => {
-        setPages(data);
-      })
-    .catch(err => message.error(err));
-  }, []);
 
   return (
     <>
@@ -35,31 +26,27 @@ export default function HomePage() {
         <title>SJMC Landing Page</title>
       </Head>
       <Layout className="lp-layout">
-        {!screens.md && /* For mobile devices */
-        <><Header className="layout-header">
-          <Image src={themeCtx.userTheme === 'light' ? BgLight : BgDark} 
-            alt="Background" unoptimized layout="fill" objectFit="cover"
-          />
-        </Header>
-        <Content className="layout-content">
-          <Space direction="vertical" style={{width: '100%'}} size="large">
-            <div className="home-title">
-              <Title className="home-title" level={2}>标题</Title>
-            </div>
-            {pages.map(page => (
-              <BasicCard 
-                key={page.id} 
-                id={page.id.toString()} 
-                title={page.title} 
-                subtitle={page.subtitle} 
-                style={{backgroundColor: themeCtx.userTheme === 'light' ? page.card_color_light : page.card_color_dark}}
-                />
-              ))
-            }
-          </Space>
-        </Content></>}
-        {screens.md && /* For desktop devices */
-          <></>
+        {!screens.lg && /* For mobile devices */
+          <><Header className="layout-header">
+            <Image src={themeCtx.userTheme === 'light' ? BgLight : BgDark} 
+              alt="Background" unoptimized layout="fill" objectFit="cover"
+            />
+          </Header>
+          <Content className="layout-content">
+            <HomeCardList/>
+          </Content></>
+        }
+        {screens.lg && /* For desktop devices */
+          <Layout>
+            <Sider width="60%">
+              <Image src={themeCtx.userTheme === 'light' ? BgLight : BgDark} 
+              alt="Background" unoptimized layout="fill" objectFit="cover"
+            />
+            </Sider>
+            <Content className="layout-content-desktop">
+              <HomeCardList/>
+            </Content>
+          </Layout>
         }
         <Footer className="layout-footer">
             上海交通大学 Minecraft 社 | 沪ICP备05052060号-7
