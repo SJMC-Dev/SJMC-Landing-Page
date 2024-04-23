@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Layout, Button, Space, Typography, FloatButton, Result } from "antd";
+import { Layout, Button, Space, Typography, FloatButton, Result, Grid } from "antd";
 import Head from "next/head";
 import Link from "next/link";
 import { ArrowLeftOutlined, MoonOutlined, SunOutlined, ArrowUpOutlined, LoadingOutlined } from "@ant-design/icons";
@@ -17,6 +17,7 @@ const DetailPage = () => {
     const router = useRouter();
     const message = useContext(MessageContext);
     const themeCtx = useContext(ThemeContext);
+    const screens = Grid.useBreakpoint();
     const { id } = router.query;
 
     const [pageContent, setPageContent] = useState<Page | null>(null);
@@ -86,7 +87,7 @@ const DetailPage = () => {
             </Layout>
             <FloatButton.Group 
                 shape="square"
-                style={{ right: 24 }}
+                style={screens.lg ? { bottom: 60, right: 30 } : { bottom: 48, right: 20 }}
             >
                 <FloatButton 
                     icon={<ArrowUpOutlined />}

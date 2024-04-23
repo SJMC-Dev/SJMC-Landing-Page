@@ -106,6 +106,10 @@ code {
     min-height: 100vh !important;
 }
 
+.desktop {
+    max-height: 100vh !important;
+}
+
 .main-layout {
     min-height: 100vh !important;
 }
@@ -159,16 +163,21 @@ code {
 }
 
 .layout-content {
-    padding: 0.5vh var(--page-padding) 2vh var(--page-padding) !important;
+    padding: 0.5vh var(--page-padding) 4vh var(--page-padding) !important;
+    overflow-y: auto;
+
     @include themify {
         background-color: themed('primary-bg-color');
     }
 }
 
 .lp-layout .layout-content-desktop {
-    padding: 10vh calc(0.2*var(--page-padding)) 10vh calc(0.2*var(--page-padding)) !important;
+    padding: 8vh calc(0.2*var(--page-padding)) 8vh calc(0.2*var(--page-padding)) !important;
+    overflow-y: auto;
+
     @include themify {
         background-color: themed('primary-bg-color');
+        border-left: 1px solid themed('primary-border-color');
     }
 }
 
@@ -179,6 +188,7 @@ code {
     font-size: 12px;
     @include themify {
         color: themed('secondary-text-color');
+        border-top: 1px solid themed('primary-border-color');
     }
 }
 
@@ -220,10 +230,18 @@ code {
     @include themify {
         color: themed('sjtu-red-color') !important;
     }
+
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.4s;
 }
 
-.home-title {
+.home-title-normal {
     @include themify {
         color: themed('secondary-text-color') !important;
     }
+
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+    animation-delay: 0.1s;
 }
