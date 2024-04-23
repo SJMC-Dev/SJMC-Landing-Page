@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { Layout, Button, Space, Typography, FloatButton } from "antd";
+import { Layout, Button, Space, Typography, FloatButton, Result } from "antd";
 import Head from "next/head";
 import Link from "next/link";
-import { ArrowLeftOutlined, MoonOutlined, SunOutlined, ArrowUpOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, MoonOutlined, SunOutlined, ArrowUpOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
 import { MessageContext } from '@/contexts/message';
 import ThemeContext from '@/contexts/theme';
@@ -48,6 +48,13 @@ const DetailPage = () => {
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    if (pageContent && pageContent.type === 'link')
+        return (
+            <>
+                <Result icon={<LoadingOutlined />} title="正在跳转..."/>
+            </>
+        )
 
     return (
         <>
