@@ -1,6 +1,8 @@
-import { createContext, useEffect } from 'react';
+import { createContext, useEffect, useContext } from 'react';
 import { ConfigProvider, theme } from 'antd';
+import { CodeOutlined } from '@ant-design/icons';
 import { LayoutProps } from '@/models/layout';
+import { MessageContext } from '@/contexts/message';
 import useLocalStorage from "@/hooks/useLocalStorage";
 import zhCN from 'antd/locale/zh_CN';
 
@@ -16,6 +18,7 @@ const ThemeContext = createContext<ThemeContextType>({
 
 export const ThemeContextProvider = (props : LayoutProps) => {
   const [userTheme, setUserTheme] = useLocalStorage('theme', 'light')
+  const message = useContext(MessageContext);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', userTheme);
@@ -23,6 +26,11 @@ export const ThemeContextProvider = (props : LayoutProps) => {
 
   const changeThemeHandler = (themeName : string) => {        
     setUserTheme(themeName);
+    message.open({
+      content: `Set the time to ${themeName==='light'?'1000':'18000'}`,
+      icon: <CodeOutlined />,
+      duration: 1
+    })
   }
 
   const contextValue = {

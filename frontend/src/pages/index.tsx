@@ -35,7 +35,8 @@ export default function HomePage() {
         <title>SJMC Landing Page</title>
       </Head>
       <Layout className="lp-layout">
-        <Header className="layout-header">
+        {!screens.md && /* For mobile devices */
+        <><Header className="layout-header">
           <Image src={themeCtx.userTheme === 'light' ? BgLight : BgDark} 
             alt="Background" unoptimized layout="fill" objectFit="cover"
           />
@@ -56,7 +57,10 @@ export default function HomePage() {
               ))
             }
           </Space>
-        </Content>
+        </Content></>}
+        {screens.md && /* For desktop devices */
+          <></>
+        }
         <Footer className="layout-footer">
             上海交通大学 Minecraft 社 | 沪ICP备05052060号-7
         </Footer>

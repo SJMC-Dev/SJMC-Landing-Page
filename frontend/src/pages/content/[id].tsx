@@ -9,7 +9,6 @@ import ThemeContext from '@/contexts/theme';
 import { getPageContent } from "@/services/pages";
 import { Page } from "@/models/page";
 import MarkdownRenderer from "@/components/markdown-renderer";
-import { SP } from "next/dist/shared/lib/utils";
 
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;

@@ -23,10 +23,10 @@ export default function App({ Component, pageProps }: AppProps) {
     );
 
   return (
-    <ThemeContextProvider>
-      <MessageContextProvider>
+    <MessageContextProvider>
+      <ThemeContextProvider>
         <Component {...pageProps} /> 
-      </MessageContextProvider>
-    </ThemeContextProvider>
+      </ThemeContextProvider>
+    </MessageContextProvider>
   )
 }
