@@ -3,7 +3,6 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkHtml from 'remark-html';
 import rehypeRaw from 'rehype-raw';
-import rehypeSanitize from 'rehype-sanitize';
 import ThemeContext from "@/contexts/theme";
 
 const MarkdownRenderer = ({content} : any) =>{
@@ -15,7 +14,7 @@ const MarkdownRenderer = ({content} : any) =>{
         <ReactMarkdown
             className={'markdown-body-' + (themeCtx.userTheme === 'dark' ? 'dark' : 'light')}
             remarkPlugins={[remarkGfm, remarkHtml]}
-            rehypePlugins={[rehypeRaw, rehypeSanitize]}
+            rehypePlugins={[rehypeRaw]}
             skipHtml={false}
         >
             {content}
