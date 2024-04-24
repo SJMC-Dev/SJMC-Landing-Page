@@ -24,6 +24,7 @@ npm run dev
 To launch a production server, use
 
 ```bash
+npm run build
 npm run start
 ```
 
@@ -51,6 +52,10 @@ python manage.py runserver
 ```
 
 To launch the production environment server, please use Gunicorn or another suitable server.
+
+```bash
+gunicorn sjmc_lp.asgi -k uvicorn.workers.UvicornWorker
+```
 
 It should be noted that the backend also has static pages that need to be built for the production environment (i.e., the admin page).
 
