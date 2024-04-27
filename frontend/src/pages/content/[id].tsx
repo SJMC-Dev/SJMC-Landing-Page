@@ -76,7 +76,7 @@ const DetailPage = () => {
                 <Content className="layout-content">
                     {pageContent && pageContent.type==='article' &&
                     <Space className="page-content" direction="vertical" style={{width: '100%'}}>
-                        <Title className="home-title" level={3}>{pageContent.title}</Title>
+                        <Title className="home-title" level={screens.lg ? 2:3}>{pageContent.title}</Title>
                         <MarkdownRenderer content={pageContent.content}/>
                     </Space>
                     }
