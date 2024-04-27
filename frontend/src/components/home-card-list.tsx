@@ -43,6 +43,7 @@ const HomeCardList = () => {
                 id={page.id.toString()} 
                 title={page.title} 
                 subtitle={page.subtitle} 
+                content_type={page.type}
                 logo_url={page.logo_url}
                 banner_url={page.banner_url}
                 style={{backgroundColor: themeCtx.userTheme === 'light' ? page.card_color_light : page.card_color_dark}}

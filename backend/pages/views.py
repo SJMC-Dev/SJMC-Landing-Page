@@ -19,6 +19,7 @@ def list_pages(request):
         'id', 
         'title', 
         'subtitle', 
+        'type',
         'card_color_light', 
         'card_color_dark',
         'logo_url',
