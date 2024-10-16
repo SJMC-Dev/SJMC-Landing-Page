@@ -14,6 +14,7 @@ class Page(models.Model):
     card_color_dark = models.CharField(max_length=7, default='#000000')
     logo_url = models.CharField(max_length=100, blank=True)
     banner_url = models.CharField(max_length=100, blank=True)
+    views_count = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ['order']
