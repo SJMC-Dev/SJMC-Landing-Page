@@ -1,18 +1,12 @@
-**/__pycache__/
+# Python cache files
+__pycache__/
 
+# Database file
 db.sqlite3
 
-## migrations
+# Ignore all migration files except __init__.py
+/pages/migrations/*
+!/pages/migrations/__init__.py
 
-/chat/migrations/**
-!/chat/migrations/__init__.py
-
-/oauth/migrations/**
-!/oauth/migrations/__init__.py
-
-/files/migrations/**
-!/files/migrations/__init__.py
-
-## build
-
-build
+# Build directory
+build/
