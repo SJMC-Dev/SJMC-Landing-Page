@@ -15,4 +15,5 @@ export interface Page {
     subtitle?: string;
     type: string;
     content: string;
+    views_count: number;
 }

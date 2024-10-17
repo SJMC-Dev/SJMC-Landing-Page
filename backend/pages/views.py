@@ -5,12 +5,15 @@ from asgiref.sync import sync_to_async
 @sync_to_async
 def get_page(request, page_id):
     page = Page.objects.get(pk=page_id)
+    page.views_count += 1
+    page.save()
     return JsonResponse({
         'title': page.title,
         'subtitle': page.subtitle,
         'type': page.type,
         'content': page.content,
-        'is_shown': page.is_shown
+        'is_shown': page.is_shown,
+        'views_count': page.views_count 
     })
 
 @sync_to_async

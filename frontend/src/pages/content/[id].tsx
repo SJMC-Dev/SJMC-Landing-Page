@@ -9,6 +9,8 @@ import ThemeContext from '@/contexts/theme';
 import { getPageContent } from "@/services/pages";
 import { Page } from "@/models/page";
 import MarkdownRenderer from "@/components/markdown-renderer";
+import { EyeOutlined } from "@ant-design/icons";
+
 
 const { Header, Footer, Content } = Layout;
 const { Title } = Typography;
@@ -78,6 +80,9 @@ const DetailPage = () => {
                     <Space className="page-content" direction="vertical" style={{width: '100%'}}>
                         <Title className="home-title" level={screens.lg ? 2:3}>{pageContent.title}</Title>
                         <MarkdownRenderer content={pageContent.content}/>
+                        <Space direction="horizontal" style={{ color: "#a9a9a9", marginTop: '64px' }}>
+                            <EyeOutlined /> {pageContent.views_count} 次阅读
+                        </Space>
                     </Space>
                     }
                 </Content>
