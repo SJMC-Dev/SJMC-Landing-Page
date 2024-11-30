@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Layout, Button, Space, Typography, FloatButton, Result, Grid } from "antd";
 import Head from "next/head";
 import Link from "next/link";
-import { ArrowLeftOutlined, MoonOutlined, SunOutlined, ArrowUpOutlined, LoadingOutlined, ShareAltOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, MoonOutlined, SunOutlined, ArrowUpOutlined, LoadingOutlined, ShareAltOutlined, CalendarOutlined } from "@ant-design/icons";
 import { useRouter } from "next/router";
 import { MessageContext } from '@/contexts/message';
 import ThemeContext from '@/contexts/theme';
@@ -81,11 +81,15 @@ const DetailPage = () => {
                     <Space className="page-content" direction="vertical" style={{width: '100%'}}>
                         <Title className="home-title" level={screens.lg ? 2:3}>{pageContent.title}</Title>
                         <MarkdownRenderer content={pageContent.content}/>
-                        <Space direction="horizontal" style={{ color: "#a9a9a9", marginTop: '64px' }}>
-                            <EyeOutlined /> {pageContent.views_count} 次阅读
-                        </Space>
-                        <Space direction="horizontal" style={{ color: "#a9a9a9", marginTop: '16px' }}>
-                            <span>📅更新时间：{ISOtoDate}</span>
+                            <Space direction="horizontal" style={{ color: "#a9a9a9", marginTop: '64px' }} size="large">
+                                <Space direction="horizontal">
+                                    <EyeOutlined />{pageContent.views_count}次阅读
+                                </Space>
+                                <Space direction="horizontal">
+                                    <CalendarOutlined />
+                                    {pageContent.created_at === pageContent.updated_at ? '创建于' : '更新于'}
+                                    {ISOtoDate(pageContent.updated_at)}
+                                </Space>
                         </Space>
                     </Space>
                     }
@@ -108,7 +112,11 @@ const DetailPage = () => {
                 />
                  <FloatButton
                     icon={<ShareAltOutlined />}
-                    onClick={shareContent}
+                    onClick={() => {
+                        shareContent(pageContent?.title,
+                            `分享页面 ${pageContent?.title} #${pageContent?.id}`,
+                            window.location.href)
+                    }}
                 />
             </FloatButton.Group>
         </>
