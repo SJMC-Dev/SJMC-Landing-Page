@@ -10,4 +10,4 @@ class PageSummarySerializer(serializers.ModelSerializer):
 class PageDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Page
-        fields = ['title', 'subtitle', 'type', 'content', 'views_count']
+        fields = ['title', 'subtitle', 'type', 'content', 'views_count', 'created_at', 'updated_at']
